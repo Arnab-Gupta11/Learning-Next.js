@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Exploring the Wonders of Nature",
+      "description": "Discover the breathtaking beauty of nature as we venture into lush forests, towering mountains, and serene lakes. Witness stunning landscapes and diverse wildlife in this immersive journey.",
+      "likes_count": 256
+    },
+    {
+      "id": 2,
+      "title": "The Art of Cooking: A Culinary Adventure",
+      "description": "Embark on a culinary adventure filled with mouthwatering flavors and tantalizing aromas. From gourmet recipes to home-cooked meals, explore the joys of cooking and sharing food with loved ones.",
+      "likes_count": 478
+    },
+    {
+      "id": 3,
+      "title": "Unveiling the Mysteries of Space",
+      "description": "Dive into the vast expanse of space and unravel the mysteries of the cosmos. From distant galaxies to enigmatic black holes, join us on an awe-inspiring journey through the universe.",
+      "likes_count": 732
+    },
+    {
+      "id": 4,
+      "title": "The Power of Mindfulness: Finding Inner Peace",
+      "description": "Experience the transformative power of mindfulness as we explore practices for cultivating inner peace and emotional well-being. Discover simple techniques to reduce stress and live mindfully.",
+      "likes_count": 613
+    },
+    {
+      "id": 5,
+      "title": "Adventures in Literature: Journey through Classic Tales",
+      "description": "Embark on a literary journey through the timeless classics of world literature. From epic adventures to poignant tragedies, delve into the rich tapestry of human experience and imagination.",
+      "likes_count": 895
+    },
+    {
+      "id": 6,
+      "title": "Capturing Moments: The Art of Photography",
+      "description": "Explore the world through the lens of a camera and capture the beauty of everyday life. From stunning landscapes to candid portraits, learn the art of photography and storytelling.",
+      "likes_count": 367
+    }
+  ]
+}
