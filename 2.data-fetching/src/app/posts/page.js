@@ -1,7 +1,18 @@
+import Link from "next/link";
 import React from "react";
 
 const PostsPage = async () => {
-  const res = await fetch("http://localhost:5000/posts");
+  const res = await fetch("http://localhost:5000/posts", {
+    // cache: "force-cache", //"force-cache" means create the html file in build time. By default its set to force-cache.
+    /* 
+    //Revalidation is the process of purging the Data Cache and re-fetching the latest data.utomatically revalidate data after a certain amount of time has passed. In this code after 5sec.It is for production.If I not use this it will not change fetching data without build.(SSG- static site generation)
+    next: {
+          revalidate: 5,
+     },
+     */
+
+    cache: "no-store", //server site rendering When user request for a route or make change in data.It make the html content in server and send it for rendering. It will not make the html for content in build time.
+  });
   const posts = await res.json();
   console.log(posts.length);
   return (
@@ -15,7 +26,9 @@ const PostsPage = async () => {
               <p>{post.description}</p>
               <p>Likes: {post.likes_count}</p>
               <div className="card-actions justify-end">
-                <button className="btn bg-emerald-400">See more</button>
+                <Link href={`/posts/${post.id}`}>
+                  <button className="btn bg-emerald-400">See more</button>
+                </Link>
               </div>
             </div>
           </div>
