@@ -13,52 +13,67 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Image from "next/image";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+//logo
+import logo from "@/assets/logo.png";
+import Link from "next/link";
 
-const Navbar = () => {
+//Icon
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { Stack } from "@mui/material";
+
+const navItem = [
+  {
+    route: "Home",
+    path: "/",
+  },
+  {
+    route: "Pages",
+    path: "/pages",
+  },
+  {
+    route: "Category",
+    path: "/category",
+  },
+  {
+    route: "News",
+    path: "/news",
+  },
+  {
+    route: "About",
+    path: "/about",
+  },
+  {
+    route: "Contact",
+    path: "/contact",
+  },
+];
+
+function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="bg-black">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          {/* logo */}
+          <Box
             sx={{
-              mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            LOGO
-          </Typography>
-
+            <Image src={logo} height={50} width={50} alt="logo" />
+          </Box>
+          {/* responsive */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -88,72 +103,50 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {navItem.map((item) => (
+                <MenuItem key={item}>
+                  <Link href={item.path}>
+                    <Button>{item.route}</Button>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          <Box
             sx={{
-              mr: 2,
               display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
-                {page}
-              </Button>
+            <Image src={logo} height={50} width={50} alt="logo" />
+          </Box>
+
+          <Box className="w-full justify-center" sx={{ display: { xs: "none", md: "flex" } }}>
+            {navItem.map((item) => (
+              <MenuItem key={item}>
+                <Link href={item.path}>
+                  <Button className="text-white">{item.route}</Button>
+                </Link>
+              </MenuItem>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <Stack direction="row" spacing={2} sx={{ "& svg": { color: "white" } }}>
+            <IconButton aria-label="delete">
+              <FacebookIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <FacebookIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <FacebookIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <FacebookIcon />
+            </IconButton>
+          </Stack>
         </Toolbar>
       </Container>
     </AppBar>
   );
-};
+}
 export default Navbar;
