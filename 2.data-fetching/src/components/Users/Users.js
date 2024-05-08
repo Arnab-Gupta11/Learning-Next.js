@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
+import styles from "./Users.module.css";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const fetchUser = async () => {
@@ -13,7 +13,7 @@ const Users = () => {
   }, []);
   return (
     <div className="max-w-lg mx-auto">
-      <h2 className="text-3xl font-bold my-10 text-center">Total Users: {users.length}</h2>
+      <h2 className={styles.header_text}>Total Users: {users.length}</h2>
       {users.map((user) => {
         return (
           <div key={user.id} className="card w-full bg-emerald-200 shadow-xl mx-auto mt-5">
