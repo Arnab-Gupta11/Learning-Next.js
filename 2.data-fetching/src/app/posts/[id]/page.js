@@ -1,6 +1,18 @@
 import Link from "next/link";
 import React from "react";
 
+export async function generateStaticParams() {
+  const res = await fetch("http://localhost:5000/posts");
+  const posts = await res.json();
+  const ids = posts.map((post) => {
+    return {
+      id: post.id,
+    };
+  });
+  // console.log(ids);
+  return ids;
+}
+
 const DetailsPage = async ({ params }) => {
   //In dynamic route SSR(server side rendering) used while fetching data.So, no need to add option.
   const res = await fetch(`http://localhost:5000/posts/${params.id}`);
