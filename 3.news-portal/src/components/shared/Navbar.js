@@ -58,8 +58,8 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" className="bg-black">
-      <Container maxWidth="xl">
+    <AppBar position="static" className="bg-black text-white">
+      <Container className="bg-black max-w-screen-xl text-white">
         <Toolbar disableGutters>
           {/* logo */}
           <Box
@@ -67,7 +67,7 @@ function Navbar() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <Image src={logo} height={50} width={50} alt="logo" />
+            <Image src={logo} height={100} width={100} alt="logo" />
           </Box>
           {/* responsive */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -113,7 +113,7 @@ function Navbar() {
               display: { xs: "flex", md: "none" },
             }}
           >
-            <Image src={logo} height={50} width={50} alt="logo" />
+            <Image src={logo} height={100} width={100} alt="logo" />
           </Box>
 
           <Box className="w-full" sx={{ display: { xs: "none", md: "flex" }, justifyContent: "center" }}>
