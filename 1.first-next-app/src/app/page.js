@@ -5,6 +5,7 @@ function HomePage() {
   // throw new Error();
   return (
     <div>
+      <h1>Home header</h1>
       <div className="flex gap-5 mx-10 list-none my-5">
         <Link href={"/about"}>
           <li>About</li>
@@ -18,6 +19,7 @@ function HomePage() {
       </div>
       HomePage
       <Counter />
+      <h1>Home Footer</h1>
     </div>
   );
 }
