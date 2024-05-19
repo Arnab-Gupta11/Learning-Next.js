@@ -19,6 +19,9 @@ function HomePage() {
         <Link href={"/account"}>
           <li>Account</li>
         </Link>
+        <Link href={"/cart?type=electronics&price=500"}>
+          <li>Cart</li>
+        </Link>
       </div>
       HomePage
       <Counter />
