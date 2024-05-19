@@ -16,6 +16,9 @@ function HomePage() {
         <Link href={"/news"}>
           <li>News</li>
         </Link>
+        <Link href={"/account"}>
+          <li>Account</li>
+        </Link>
       </div>
       HomePage
       <Counter />
