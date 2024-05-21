@@ -1,23 +1,24 @@
 {
-  "name": "2.data-fetching",
+  "name": "4.receipie-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "json-server": "json-server --watch db.json --port 5000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "json-server": "^1.0.0-alpha.23",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.378.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "swr": "^2.2.5"
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "daisyui": "^4.10.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
