@@ -14,10 +14,19 @@ const RecipeListPage = async () => {
         {recipes?.map((recipe) => {
           return (
             <Link key={recipe.id} href={`/recipe-list/${recipe.id}`}>
-              <Card>
+              <Card className="rounded-md overflow-hidden shadow-md cursor-pointer hover:scale-[1.1] transition-all">
                 <CardContent>
-                  <div className="w-full">
-                    <Image src={recipe.image} alt="recipe" width={400} height={50}></Image>
+                  <div className="py-5 rounded-md">
+                    <Image className="rounded-md object-cover object-bottom" src={recipe.image} alt="recipe" width={450} height={50}></Image>
+                  </div>
+                  <div className="p-6">
+                    <div className="ml-auto">
+                      <p className="text-lg text-gray-600 font-bold">{recipe.cuisine}</p>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900">{recipe.name}</h3>
+                    <div className="mt-4 flex items-center flex-wrap gap-2">
+                      <p className="text-base text-gray-600 font-medium">Rating: {recipe.rating}</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
