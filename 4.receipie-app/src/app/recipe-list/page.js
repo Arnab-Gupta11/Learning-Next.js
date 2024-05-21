@@ -7,8 +7,13 @@ const RecipeListPage = async () => {
   const recipes = await getAllRecipes();
   return (
     <div className="max-w-screen-xl mx-auto">
-      <div>
+      <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold border-l-4 border-gray-500 pl-1 mt-10 mb-8 mx-3 lg:mx-0">Recipes</h1>
+        <div>
+          <Link href={"/"} className="bg-black text-white px-4 py-2 rounded-md mx-auto">
+            Go back
+          </Link>
+        </div>
       </div>
       <div className="grid mx-3 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:mx-0">
         {recipes?.map((recipe) => {

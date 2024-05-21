@@ -1,6 +1,7 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { getRecipeDetails } from "@/utils/getRecipeDetails";
 import Image from "next/image";
+import Link from "next/link";
 
 const RecipeDetailsPage = async ({ params }) => {
   //   console.log(params);
@@ -8,8 +9,13 @@ const RecipeDetailsPage = async ({ params }) => {
   console.log("🚀 ~ RecipeDetailsPage ~ details:", details);
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
-      <div>
+      <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold border-l-4 border-gray-500 pl-1 mt-10 mb-8 mx-3 lg:mx-0">Details</h1>
+        <div>
+          <Link href={"/recipe-list"} className="bg-black text-white px-4 py-2 rounded-md mx-auto">
+            Go back
+          </Link>
+        </div>
       </div>
       <div className="grid grid-cols-1 mx-3 lg:mx-0 lg:grid-cols-2 gap-3">
         <div>
