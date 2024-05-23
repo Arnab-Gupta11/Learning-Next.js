@@ -5,7 +5,6 @@ import React from "react";
 
 const BlogPage = async () => {
   const blogs = await getAllBlogs();
-  console.log(blogs);
   return (
     <div className="min-h-screen bg-gradient-to-r from-slate-900 to-violet-950 p-6">
       <div className="max-w-screen-xl mx-auto ">
