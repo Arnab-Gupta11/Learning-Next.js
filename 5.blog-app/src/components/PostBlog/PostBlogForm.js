@@ -3,22 +3,32 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
-const PostBlogForm = ({ openBlogForm, setOpenBlogForm, blogFormData, setBlogFormData, loading, handleBlogSubmit }) => {
+const PostBlogForm = ({
+  openBlogForm,
+  setOpenBlogForm,
+  blogFormData,
+  setBlogFormData,
+  loading,
+  handleBlogSubmit,
+  currentEditedBlogID,
+  setCurrentEditedBlogID,
+}) => {
   return (
     <div>
       <Dialog
         open={openBlogForm}
         onOpenChange={() => {
           setOpenBlogForm(false);
-          setBlogFormData({
-            title: "",
-            description: "",
-          });
+          currentEditedBlogID ||
+            setBlogFormData({
+              title: "",
+              description: "",
+            });
         }}
       >
         <DialogContent className=" bg-slate-200">
           <DialogHeader>
-            <DialogTitle className="text-center text-2xl text-violet-950 font-bold">Add New Blog</DialogTitle>
+            <DialogTitle className="text-center text-2xl text-violet-950 font-bold">{currentEditedBlogID ? "Edit Blog" : "Add New Blog"}</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
@@ -60,7 +70,7 @@ const PostBlogForm = ({ openBlogForm, setOpenBlogForm, blogFormData, setBlogForm
               className="bg-gradient-to-r from-slate-600 to-violet-950 text-sm hover:bg-gradient-to-l text-white font-semibold py-2 px-6 rounded-full"
               type="button"
             >
-              {loading ? "Saving..." : "Save changes"}
+              {currentEditedBlogID ? (loading ? "Updating..." : "Update") : loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </DialogContent>

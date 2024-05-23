@@ -1,22 +1,23 @@
 "use client";
-
+import { FaRegEdit } from "react-icons/fa";
+import { Button } from "../ui/button";
 import useFormDialog from "@/hooks/useFormDialog";
-import PostBlogForm from "./PostBlogForm";
+import PostBlogForm from "../PostBlog/PostBlogForm";
 import axios from "axios";
 
-const initialFormValu = {
-  title: "",
-  description: "",
-};
-const PostBlog = () => {
+const UpdateBlog = ({ blog }) => {
+  const initialFormValu = {
+    title: blog?.title,
+    description: blog?.description,
+  };
   const { openBlogForm, setOpenBlogForm, blogFormData, setBlogFormData, loading, setLoading, router, currentEditedBlogID, setCurrentEditedBlogID } =
     useFormDialog(initialFormValu);
-  const handleBlogSubmit = async () => {
+
+  const handleUpdate = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("/api/add-blog", blogFormData);
+      const res = await axios.put(`/api/update-blog?id=${blog?._id}`, blogFormData);
       if (res?.data.success) {
-        setBlogFormData(initialFormValu);
         setOpenBlogForm(false);
         router.refresh();
       }
@@ -27,13 +28,16 @@ const PostBlog = () => {
     }
   };
   return (
-    <div>
-      <button
-        onClick={() => setOpenBlogForm(true)}
-        className="bg-gradient-to-r from-slate-300 to-white text-sm text-violet-950 hover:bg-gradient-to-l font-semibold py-2 px-6 rounded-full"
+    <>
+      <Button
+        onClick={() => {
+          setCurrentEditedBlogID(blog?._id);
+          setOpenBlogForm(true);
+        }}
+        className="text-green-700 bg-slate-50 hover:bg-slate-100 hover:scale-105"
       >
-        Create Blog
-      </button>
+        <FaRegEdit size={25} />
+      </Button>
       <PostBlogForm
         openBlogForm={openBlogForm}
         setOpenBlogForm={setOpenBlogForm}
@@ -41,12 +45,12 @@ const PostBlog = () => {
         setBlogFormData={setBlogFormData}
         loading={loading}
         setLoading={setLoading}
-        handleBlogSubmit={handleBlogSubmit}
+        handleBlogSubmit={handleUpdate}
         currentEditedBlogID={currentEditedBlogID}
         setCurrentEditedBlogID={setCurrentEditedBlogID}
       />
-    </div>
+    </>
   );
 };
 
-export default PostBlog;
+export default UpdateBlog;
