@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostBlogForm from "./PostBlogForm";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 const initialFormValu = {
   title: "",
   description: "",
@@ -11,10 +13,20 @@ const PostBlog = () => {
   const [openBlogForm, setOpenBlogForm] = useState(false);
   const [blogFormData, setBlogFormData] = useState(initialFormValu);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  // useEffect(() => {
+  //   router.refresh();
+  // }, [router]);
   const handleBlogSubmit = async () => {
     try {
       setLoading(true);
-      await axios.post("/api/add-blog", blogFormData);
+      const res = await axios.post("/api/add-blog", blogFormData);
+      console.log(res);
+      if (res?.data.success) {
+        setBlogFormData(initialFormValu);
+        setOpenBlogForm(false);
+        router.refresh();
+      }
     } catch (error) {
       console.log(error.message);
     } finally {
