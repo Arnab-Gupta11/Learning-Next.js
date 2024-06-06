@@ -1,4 +1,5 @@
 "use client";
+import { deleteUserAction } from "@/actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserContext } from "@/context/UserProbider";
@@ -14,6 +15,10 @@ const UserCard = ({ user }) => {
       address: user.address,
     });
     setCurrentUserId(user._id);
+  };
+  const handleDelete = async () => {
+    const res = await deleteUserAction(user._id, "/manage-users");
+    console.log(res);
   };
   return (
     <div>
@@ -31,7 +36,9 @@ const UserCard = ({ user }) => {
           <Button onClick={handleEdit} className="bg-indigo-950 rounded-[5px] px-5 py-2 text-white hover:bg-indigo-900 mr-5">
             Edit
           </Button>
-          <Button className="bg-red-600 rounded-[5px] px-5 py-2 text-white hover:bg-red-500">Delete</Button>
+          <Button onClick={handleDelete} className="bg-red-600 rounded-[5px] px-5 py-2 text-white hover:bg-red-500">
+            Delete
+          </Button>
         </CardFooter>
       </Card>
     </div>

@@ -91,3 +91,31 @@ export async function editUserAction(currentUserID, formData, pathToRevalidate) 
     };
   }
 }
+
+//delete a user action
+
+export async function deleteUserAction(currentUserID, pathToRevalidate) {
+  await connectToDb();
+  try {
+    const deletedUser = await User.findByIdAndDelete(currentUserID);
+
+    if (deletedUser) {
+      revalidatePath(pathToRevalidate);
+      return {
+        success: true,
+        message: "User deleted successfully",
+      };
+    } else {
+      return {
+        success: false,
+        message: "Not able perform delete operation! Please try again later",
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      message: "Some error occured! Please try again",
+    };
+  }
+}
